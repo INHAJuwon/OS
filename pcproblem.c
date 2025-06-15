@@ -28,7 +28,7 @@ void* thread_increment(void* arg){
 void* thread_decrement(void* arg){
 	int i,val;
 	for(int i=0;i<ITER;i++){
-		sem_wait(&fill); //fill값을 1감소시키며, fill가 0이하라면 잠겨있는 상태니 go to sleep
+		sem_wait(&fill); //fill값을 1감소시키며, fill이 0이하라면 잠겨있는 상태니 go to sleep
 		sem_wait(&m); // 전역 변수 x가 사용되는 critical section이기에 상호배제를 위한 lock
 		val=x;
 		printf("%u: %d\n",(unsigned int)pthread_self(),val);
